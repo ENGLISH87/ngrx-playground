@@ -1,26 +1,31 @@
+import { of, Observable } from 'rxjs';
+import { delay, tap } from 'rxjs/operators';
+import { QuoteState, Quote } from '../store/models/store.models';
 import { Injectable } from '@angular/core';
+import { INITIAL_QUOTE_STATE } from '../store/models/initial.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuoteService {
 
-  constructor(
-  ) {
-  }
+  constructor() {}
 
-  public getQuote(): void {
-
-    /* this.redux.dispatch(this.quoteActions.fetchQuote());
-
+  /**
+   * Fetch mock quote with delay to minic http request
+   */
+  public getQuote(): Observable<Quote> {
     const qRes = INITIAL_QUOTE_STATE;
     qRes.quote.firstName = 'Shaun';
     qRes.quote.lastName = 'English';
 
-    of(qRes).pipe(
-      delay(3000)
-    ).subscribe((q: IQuoteState) => {
-      this.redux.dispatch(this.quoteActions.updateQuote(q.quote));
-    }); */
+    return of(qRes.quote).pipe(
+      delay(3000),
+      tap(() => {
+        console.groupCollapsed('quoteRequest');
+        console.log('Quote Recieved');
+        console.groupEnd();
+      })
+    );
   }
 }

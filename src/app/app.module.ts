@@ -8,6 +8,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { reducers, metaReducers } from './store/reducers/root.reducer';
 import { SmartComponent } from './components/smart/smart.component';
+import { EffectsModule } from '@ngrx/effects';
+import { QuoteEffects } from './store/effects/quote.effects';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { SmartComponent } from './components/smart/smart.component';
       name: 'NgRx Playground',
       logOnly: environment.production,
     }),
+    EffectsModule.forRoot([QuoteEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

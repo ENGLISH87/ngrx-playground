@@ -4,7 +4,7 @@ import * as Selectors from './store/models/store.selectors';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CLEAR_STATE } from './store/reducers/root.reducer';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { AppState, PersonDetails } from './store/models/store.models';
 
 @Component({
@@ -17,18 +17,18 @@ export class AppComponent {
   state$: Observable<AppState>;
   details$: Observable<PersonDetails>;
   lastName$: Observable<string>;
+  loadingQuote$: Observable<boolean>;
 
   constructor(
     private _store: Store<AppState>
   ) {
     this.state$ = this._store;
-    this.count$ = this._store.pipe(
-      select(Selectors.selectJourneyCount),
-    );
-    this.lastName$ = this._store.pipe(
-      select(Selectors.selectLastName)
-    );
+    this.count$ = this._store.select(Selectors.selectJourneyCount);
+    this.lastName$ = this._store.select(Selectors.selectLastName);
     this.details$ = this._store.select(Selectors.selectQuoteDetails);
+    this.loadingQuote$ = this._store.select(quote => quote.quote.isFetching);
+
+    this._store.dispatch(new Quote.FectchQuote);
   }
 
   increment(): void {

@@ -60,4 +60,4 @@ export const quoteReducer = (lastState: QuoteState = INITIAL_QUOTE_STATE, action
 
     default: return lastState;
   }
-}
+};

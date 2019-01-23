@@ -28,7 +28,17 @@ export class FectchQuoteError implements Action {
 
 export class UpdateQuote implements Action {
   readonly type = QuoteActions.UPDATE_QUOTE;
-  constructor(public payload: { receivedAt: string, quote: Quote }) {}
+  payload: {
+    quote: Quote,
+    receivedAt: string
+  };
+
+  constructor(payload: { quote: Quote }) {
+    this.payload = {
+      quote: payload.quote,
+      receivedAt: Date().toString()
+    };
+  }
 }
 
 export class SaveQuote implements Action {
