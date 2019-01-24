@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { EMPTY, of } from 'rxjs';
+import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { QuoteService } from 'src/app/services/quote.service';
 import { UpdateQuote, QuoteActions, FectchQuoteError } from '../actions/quote.actions';

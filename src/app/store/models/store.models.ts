@@ -1,3 +1,5 @@
+import { RouterStateSnapshot } from '@angular/router';
+import { SerializedRouterStateSnapshot } from '@ngrx/router-store';
 
 export interface AppState {
   journey: JourneyState;
@@ -8,6 +10,7 @@ export interface JourneyState {
   currentPage: string;
   pcw: string;
   count: number;
+  router: SerializedRouterStateSnapshot;
 }
 
 export interface QuoteState {

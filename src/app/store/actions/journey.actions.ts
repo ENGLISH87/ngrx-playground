@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { ROUTER_NAVIGATED, RouterNavigatedAction } from '@ngrx/router-store';
 
 export enum JourneyActions {
   INCREMENT_COUNT = 'INCREMENT_COUNT',
@@ -24,4 +25,4 @@ export class ResetJourney implements Action {
   readonly type = JourneyActions.RESET_JOURNEY;
 }
 
-export type JourneyActionsUnion = IncrementCount | DecrementCount | SetPcw | ResetJourney;
+export type JourneyActionsUnion = IncrementCount | DecrementCount | SetPcw | ResetJourney | RouterNavigatedAction;

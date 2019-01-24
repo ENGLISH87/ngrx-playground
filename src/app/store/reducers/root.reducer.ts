@@ -62,7 +62,7 @@ export const sessionMetaReducer = (reducer: ActionReducer<AppState>): ActionRedu
       if (action.type === INIT  && serializedState) {
 
         // load session storage and continue with updated state
-        const deserialized = JSON.parse(serializedState);
+        const deserialized: AppState = JSON.parse(serializedState);
         const newState = tassign(state, {
           ...deserialized
         });

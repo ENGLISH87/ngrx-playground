@@ -4,6 +4,7 @@ export const INITIAL_JOURNEY_STATE: JourneyState = {
   currentPage: null,
   pcw: null,
   count: 0,
+  router: null
 };
 
 export const INITIAL_QUOTE_STATE: QuoteState = {

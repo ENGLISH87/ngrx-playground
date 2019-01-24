@@ -1,0 +1,19 @@
+button {
+  background: lightgray;
+  padding: 4px 8px;
+  margin: 4px 5px;
+  border-radius: 7px;
+}
+
+button:hover {
+  cursor: pointer;
+  background: #cccccc;
+}
+
+button:focus {
+  outline: none;
+}
+
+.app-root {
+  margin: 20px 0;
+}

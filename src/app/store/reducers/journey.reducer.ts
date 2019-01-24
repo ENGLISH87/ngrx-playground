@@ -1,6 +1,7 @@
 import * as Journey from '../actions/journey.actions';
 import { tassign } from 'tassign';
 import { INITIAL_JOURNEY_STATE } from '../models/initial.models';
+import { ROUTER_NAVIGATED } from '@ngrx/router-store';
 
 export const journeyReducer = (state = INITIAL_JOURNEY_STATE, action: Journey.JourneyActionsUnion) => {
   switch (action.type) {
@@ -22,7 +23,13 @@ export const journeyReducer = (state = INITIAL_JOURNEY_STATE, action: Journey.Jo
     case Journey.JourneyActions.RESET_JOURNEY:
       return INITIAL_JOURNEY_STATE;
 
+    case ROUTER_NAVIGATED:
+      return tassign(state, {
+        ...state,
+        router: action.payload.routerState
+      });
+
     default:
       return state;
   }
-}
+};

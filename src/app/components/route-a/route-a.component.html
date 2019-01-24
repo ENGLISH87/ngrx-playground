@@ -1,0 +1,28 @@
+<a [routerLink]="['/test']">go to route B</a>
+
+<div class="app-root" *ngIf="!(loadingQuote$ | async) else quoteWrapper">
+  <div>{{ state$ | async | json }}</div>
+
+  <h2> Hello Mr {{ lastName$ | async }} </h2>
+  <h3> Your count: {{ count$ | async }} </h3>
+
+  <div *ngIf="details$ | async; let details;">
+    <h3> Job title: {{ details.occupation }} </h3>
+  </div>
+  <pre>{{ details$ | async | json }}</pre>
+
+  <button (click)="increment()">+</button>
+  <button (click)="decrement()">-</button>
+  <button class="change-name" (click)="changeName()">Change name</button>
+  <button (click)="changeDetails()">Change Details</button>
+  <button (click)="changeError()">Demo Mutate Error Check</button>
+  <button (click)="resetState()">Reset State</button>
+
+  <app-smart-component></app-smart-component>
+  <br/><br/>
+  <app-dumb-component [details]="details$ | async"></app-dumb-component>
+</div>
+
+<ng-template #quoteWrapper>
+  <p>Loading Quote...</p>
+</ng-template>
