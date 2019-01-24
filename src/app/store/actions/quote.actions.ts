@@ -5,7 +5,6 @@ export enum QuoteActions {
   FETCH_QUOTE = 'FETCH_QUOTE',
   FETCH_QUOTE_SUCCESS = 'FETCH_QUOTE_SUCCESS',
   FETCH_QUOTE_ERROR = 'FETCH_QUOTE_ERROR',
-  UPDATE_QUOTE = 'UPDATE_QUOTE',
   SAVE_QUOTE = 'SAVE_QUOTE',
   CHANGE_NAME = 'CHANGE_NAME',
   CHANGE_DETAILS = 'CHANGE_DETAILS',
@@ -19,15 +18,6 @@ export class FectchQuote implements Action {
 
 export class FectchQuoteSuccess implements Action {
   readonly type = QuoteActions.FETCH_QUOTE_SUCCESS;
-}
-
-export class FectchQuoteError implements Action {
-  readonly type = QuoteActions.FETCH_QUOTE_ERROR;
-  constructor(public payload: { error: string }) {}
-}
-
-export class UpdateQuote implements Action {
-  readonly type = QuoteActions.UPDATE_QUOTE;
   payload: {
     quote: Quote,
     receivedAt: string
@@ -39,6 +29,11 @@ export class UpdateQuote implements Action {
       receivedAt: Date().toString()
     };
   }
+}
+
+export class FectchQuoteError implements Action {
+  readonly type = QuoteActions.FETCH_QUOTE_ERROR;
+  constructor(public payload: { error: string }) {}
 }
 
 export class SaveQuote implements Action {
@@ -60,5 +55,5 @@ export class MutateError implements Action {
 }
 
 export type QuoteActionsUnion = FectchQuote | FectchQuoteSuccess |
-                                FectchQuoteError | UpdateQuote | SaveQuote |
+                                FectchQuoteError | SaveQuote |
                                 ChangeName | ChangeDetails | MutateError;

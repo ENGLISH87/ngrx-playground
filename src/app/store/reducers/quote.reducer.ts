@@ -42,9 +42,6 @@ export const quoteReducer = (lastState: QuoteState = INITIAL_QUOTE_STATE, action
       });
 
     case QuoteActions.QuoteActions.FETCH_QUOTE_SUCCESS:
-      return lastState;
-
-    case QuoteActions.QuoteActions.UPDATE_QUOTE:
       return tassign(lastState, {
         isFetching: false,
         receivedAt: action.payload.receivedAt,

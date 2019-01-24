@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { QuoteService } from 'src/app/services/quote.service';
-import { UpdateQuote, QuoteActions, FectchQuoteError } from '../actions/quote.actions';
+import { QuoteActions, FectchQuoteError, FectchQuoteSuccess } from '../actions/quote.actions';
 
 @Injectable()
 export class QuoteEffects {
@@ -13,7 +13,7 @@ export class QuoteEffects {
     ofType(QuoteActions.FETCH_QUOTE),
     mergeMap(() => this.quoteService.getQuote()
       .pipe(
-        map(quote => new UpdateQuote({ quote: quote })),
+        map(quote => new FectchQuoteSuccess({ quote: quote })),
         catchError(err => of(new FectchQuoteError({ error: err })))
       )
     )

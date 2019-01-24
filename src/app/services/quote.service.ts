@@ -25,12 +25,7 @@ export class QuoteService {
     });
 
     return of(qRes.quote).pipe(
-      delay(3000),
-      tap(() => {
-        console.groupCollapsed('quoteRequest');
-        console.log('Quote Recieved');
-        console.groupEnd();
-      })
+      delay(3000)
     );
   }
 }
