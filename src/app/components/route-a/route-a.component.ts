@@ -1,8 +1,8 @@
 import * as Quote from '../../store/actions/quote.actions';
 import * as Journey from '../../store/actions/journey.actions';
 import * as Selectors from '../../store/models/store.selectors';
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { CLEAR_STATE } from '../../store/reducers/root.reducer';
 import { Store } from '@ngrx/store';
 import { AppState, PersonDetails } from '../../store/models/store.models';
@@ -12,12 +12,13 @@ import { AppState, PersonDetails } from '../../store/models/store.models';
   templateUrl: './route-a.component.html',
   styleUrls: ['./route-a.component.scss']
 })
-export class RouteAComponent {
+export class RouteAComponent implements OnDestroy {
   count$: Observable<number>;
   state$: Observable<AppState>;
   details$: Observable<PersonDetails>;
   lastName$: Observable<string>;
   loadingQuote$: Observable<boolean>;
+  stateSub: Subscription;
 
   constructor(
     private _store: Store<AppState>
@@ -28,7 +29,11 @@ export class RouteAComponent {
     this.details$ = this._store.select(Selectors.selectQuoteDetails);
     this.loadingQuote$ = this._store.select(quote => quote.quote.isFetching);
 
-    this._store.dispatch(new Quote.FectchQuote);
+    this.stateSub = this._store.subscribe(state => {
+      if (!state.quote.receivedAt && !state.quote.isFetching) {
+        this._store.dispatch(new Quote.FectchQuote());
+      }
+    });
   }
 
   increment(): void {
@@ -57,5 +62,9 @@ export class RouteAComponent {
 
   resetState(): void {
     this._store.dispatch({ type: CLEAR_STATE });
+  }
+
+  ngOnDestroy(): void {
+    if (this.stateSub) { this.stateSub.unsubscribe(); }
   }
 }

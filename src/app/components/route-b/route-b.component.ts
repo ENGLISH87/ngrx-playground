@@ -18,7 +18,5 @@ export class RouteBComponent {
     private _store: Store<AppState>
   ) {
     this.routerState$ = this._store.select(store => store.journey.router);
-
-    this._store.dispatch(new Quote.FectchQuote);
   }
 }
