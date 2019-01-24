@@ -12,7 +12,7 @@ import { AppState, PersonDetails } from '../../store/models/store.models';
   templateUrl: './route-a.component.html',
   styleUrls: ['./route-a.component.scss']
 })
-export class RouteAComponent implements OnDestroy {
+export class RouteAComponent {
   count$: Observable<number>;
   state$: Observable<AppState>;
   details$: Observable<PersonDetails>;
@@ -28,12 +28,6 @@ export class RouteAComponent implements OnDestroy {
     this.lastName$ = this._store.select(Selectors.selectLastName);
     this.details$ = this._store.select(Selectors.selectQuoteDetails);
     this.loadingQuote$ = this._store.select(quote => quote.quote.isFetching);
-
-    this.stateSub = this._store.subscribe(state => {
-      if (!state.quote.receivedAt && !state.quote.isFetching) {
-        this._store.dispatch(new Quote.FectchQuote());
-      }
-    });
   }
 
   increment(): void {
@@ -62,9 +56,5 @@ export class RouteAComponent implements OnDestroy {
 
   resetState(): void {
     this._store.dispatch({ type: CLEAR_STATE });
-  }
-
-  ngOnDestroy(): void {
-    if (this.stateSub) { this.stateSub.unsubscribe(); }
   }
 }

@@ -1,4 +1,6 @@
-<a [routerLink]="['/']">Go to route A</a>
+<h2>Route B</h2>
+<a [routerLink]="['/']">Interstitial</a> | 
+<a [routerLink]="['/route-a']">Go to route A</a>
 
 <div class="app-root">
   <div>{{ routerState$ | async | json }}</div>

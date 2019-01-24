@@ -1,4 +1,6 @@
-<a [routerLink]="['/test']">Go to route B</a>
+<h2>Route A</h2>
+<a [routerLink]="['/']">Interstitial</a> | 
+<a [routerLink]="['/route-b']">Go to route B</a>
 
 <div class="app-root" *ngIf="!(loadingQuote$ | async) else quoteWrapper">
   <div>{{ state$ | async | json }}</div>

@@ -14,10 +14,13 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { RouterModule, Routes } from '@angular/router';
 import { RouteAComponent } from './components/route-a/route-a.component';
 import { RouteBComponent } from './components/route-b/route-b.component';
+import { InterstitialComponent } from './components/interstitial/interstitial.component';
+import { RouterEffects } from './store/effects/router.effects';
 
 const APP_ROUTES: Routes = [
-  { path: '', component: RouteAComponent },
-  { path: 'test', component: RouteBComponent }
+  { path: '', component: InterstitialComponent },
+  { path: 'route-a', component: RouteAComponent },
+  { path: 'route-b', component: RouteBComponent }
 ];
 
 @NgModule({
@@ -26,7 +29,8 @@ const APP_ROUTES: Routes = [
     DumbComponent,
     SmartComponent,
     RouteAComponent,
-    RouteBComponent
+    RouteBComponent,
+    InterstitialComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ const APP_ROUTES: Routes = [
       logOnly: environment.production,
     }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([QuoteEffects])
+    EffectsModule.forRoot([QuoteEffects, RouterEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
