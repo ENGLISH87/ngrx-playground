@@ -1,10 +1,8 @@
-import * as Quote from '../../store/actions/quote.actions';
-import * as Selectors from '../../store/models/store.selectors';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AppState, PersonDetails } from '../../store/models/store.models';
 import { SerializedRouterStateSnapshot } from '@ngrx/router-store';
+import { AppState } from 'src/app/state/state.models';
 
 @Component({
   selector: 'app-route-b',

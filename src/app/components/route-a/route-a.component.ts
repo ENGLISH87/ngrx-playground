@@ -1,11 +1,13 @@
-import * as Quote from '../../store/actions/quote.actions';
-import * as Journey from '../../store/actions/journey.actions';
-import * as Selectors from '../../store/models/store.selectors';
-import { Component, OnDestroy } from '@angular/core';
+import * as Quote from '../../state/quote/quote.actions';
+import * as Journey from '../../state/journey/journey.actions';
+import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { CLEAR_STATE } from '../../store/reducers/root.reducer';
+import { CLEAR_STATE } from '../../state/state.reducer';
 import { Store } from '@ngrx/store';
-import { AppState, PersonDetails } from '../../store/models/store.models';
+import { AppState } from 'src/app/state/state.models';
+import { PersonDetails } from 'src/app/state/quote/quote.models';
+import * as JourneySelectors from 'src/app/state/journey/journey.selectors';
+import * as QuoteSelectors from 'src/app/state/quote/quote.selectors';
 
 @Component({
   selector: 'app-route-a',
@@ -24,9 +26,9 @@ export class RouteAComponent {
     private _store: Store<AppState>
   ) {
     this.state$ = this._store;
-    this.count$ = this._store.select(Selectors.selectJourneyCount);
-    this.lastName$ = this._store.select(Selectors.selectLastName);
-    this.details$ = this._store.select(Selectors.selectQuoteDetails);
+    this.count$ = this._store.select(JourneySelectors.selectJourneyCount);
+    this.lastName$ = this._store.select(QuoteSelectors.selectLastName);
+    this.details$ = this._store.select(QuoteSelectors.selectQuoteDetails);
     this.loadingQuote$ = this._store.select(quote => quote.quote.isFetching);
   }
 

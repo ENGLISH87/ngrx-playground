@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { PersonDetails, AppState } from 'src/app/store/models/store.models';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectQuoteDetails } from 'src/app/store/models/store.selectors';
+import { selectQuoteDetails } from 'src/app/state/quote/quote.selectors';
+import { PersonDetails } from 'src/app/state/quote/quote.models';
+import { AppState } from 'src/app/state/state.models';
 
 @Component({
   selector: 'app-smart-component',

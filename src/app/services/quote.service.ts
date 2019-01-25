@@ -1,8 +1,7 @@
-import { of, Observable } from 'rxjs';
+import { of, Observable, throwError } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
-import { Quote } from '../store/models/store.models';
 import { Injectable } from '@angular/core';
-import { INITIAL_QUOTE_STATE } from '../store/models/initial.models';
+import { Quote, INITIAL_QUOTE_STATE } from '../state/quote/quote.models';
 
 @Injectable({
   providedIn: 'root',
@@ -24,8 +23,10 @@ export class QuoteService {
       }
     });
 
+    // return throwError('Get Quote Service Error');
     return of(qRes.quote).pipe(
       delay(3000)
     );
+
   }
 }

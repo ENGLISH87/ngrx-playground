@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../store/models/store.models';
-import * as Quote from '../../store/actions/quote.actions';
+import * as Quote from '../../state/quote/quote.actions';
+import { AppState } from 'src/app/state/state.models';
 
 @Component({
   selector: 'app-interstitial',

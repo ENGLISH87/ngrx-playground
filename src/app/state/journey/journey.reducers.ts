@@ -1,26 +1,26 @@
-import * as Journey from '../actions/journey.actions';
+import * as Journey from './journey.actions';
 import { tassign } from 'tassign';
-import { INITIAL_JOURNEY_STATE } from '../models/initial.models';
 import { ROUTER_NAVIGATED } from '@ngrx/router-store';
+import { INITIAL_JOURNEY_STATE } from './journey.models';
 
 export const journeyReducer = (state = INITIAL_JOURNEY_STATE, action: Journey.JourneyActionsUnion) => {
   switch (action.type) {
-    case Journey.JourneyActions.INCREMENT_COUNT:
+    case Journey.JourneyActionTypes.INCREMENT_COUNT:
       return tassign(state, {
         count: state.count + 1
       });
 
-    case Journey.JourneyActions.DECREMENT_COUNT:
+    case Journey.JourneyActionTypes.DECREMENT_COUNT:
       return tassign(state, {
         count: state.count - 1
       });
 
-    case Journey.JourneyActions.SET_PCW:
+    case Journey.JourneyActionTypes.SET_PCW:
       return tassign(state, {
         pcw: action.payload.pcw
       });
 
-    case Journey.JourneyActions.RESET_JOURNEY:
+    case Journey.JourneyActionTypes.RESET_JOURNEY:
       return INITIAL_JOURNEY_STATE;
 
     case ROUTER_NAVIGATED:

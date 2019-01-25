@@ -1,8 +1,8 @@
 import { tassign } from 'tassign';
-import { AppState } from '../models/store.models';
+import { AppState } from './state.models';
 import { environment } from 'src/environments/environment';
-import { quoteReducer } from './quote.reducer';
-import { journeyReducer } from './journey.reducer';
+import { quoteReducer } from './quote/quote.reducers';
+import { journeyReducer } from './journey/journey.reducers';
 import { ActionReducerMap, MetaReducer, ActionReducer, Action, INIT } from '@ngrx/store';
 
 /**
@@ -11,6 +11,7 @@ import { ActionReducerMap, MetaReducer, ActionReducer, Action, INIT } from '@ngr
  * ensure that none of the reducers accidentally mutates the state.
  */
 import { storeFreeze } from 'ngrx-store-freeze';
+import { SessionService } from '../services/sessionStorage.service';
 
 export const CLEAR_STATE = 'CLEAR_STATE';
 

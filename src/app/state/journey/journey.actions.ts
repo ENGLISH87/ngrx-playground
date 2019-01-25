@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
-import { ROUTER_NAVIGATED, RouterNavigatedAction } from '@ngrx/router-store';
+import { RouterNavigatedAction } from '@ngrx/router-store';
 
-export enum JourneyActions {
+export enum JourneyActionTypes {
   INCREMENT_COUNT = 'INCREMENT_COUNT',
   DECREMENT_COUNT = 'DECREMENT_COUNT',
   SET_PCW = 'SET_PCW',
@@ -9,20 +9,20 @@ export enum JourneyActions {
 }
 
 export class IncrementCount implements Action {
-  readonly type = JourneyActions.INCREMENT_COUNT;
+  readonly type = JourneyActionTypes.INCREMENT_COUNT;
 }
 
 export class DecrementCount implements Action {
-  readonly type = JourneyActions.DECREMENT_COUNT;
+  readonly type = JourneyActionTypes.DECREMENT_COUNT;
 }
 
 export class SetPcw implements Action {
-  readonly type = JourneyActions.SET_PCW;
+  readonly type = JourneyActionTypes.SET_PCW;
   constructor(public payload: { pcw: string }) {}
 }
 
 export class ResetJourney implements Action {
-  readonly type = JourneyActions.RESET_JOURNEY;
+  readonly type = JourneyActionTypes.RESET_JOURNEY;
 }
 
 export type JourneyActionsUnion = IncrementCount | DecrementCount | SetPcw | ResetJourney | RouterNavigatedAction;
