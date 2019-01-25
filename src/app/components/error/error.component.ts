@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/state/state.models';
+import { AppState } from 'src/app/store/store.models';
 
 @Component({
   selector: 'app-error',

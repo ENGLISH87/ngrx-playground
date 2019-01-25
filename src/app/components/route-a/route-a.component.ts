@@ -1,13 +1,13 @@
-import * as Quote from '../../state/quote/quote.actions';
-import * as Journey from '../../state/journey/journey.actions';
+import * as Quote from '../../store/quote/quote.actions';
+import * as Journey from '../../store/journey/journey.actions';
 import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { CLEAR_STATE } from '../../state/state.reducer';
+import { CLEAR_STATE } from '../../store/store.reducer';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/state/state.models';
-import { PersonDetails } from 'src/app/state/quote/quote.models';
-import * as JourneySelectors from 'src/app/state/journey/journey.selectors';
-import * as QuoteSelectors from 'src/app/state/quote/quote.selectors';
+import { AppState } from 'src/app/store/store.models';
+import { PersonDetails } from 'src/app/store/quote/quote.models';
+import * as JourneySelectors from 'src/app/store/journey/journey.selectors';
+import * as QuoteSelectors from 'src/app/store/quote/quote.selectors';
 
 @Component({
   selector: 'app-route-a',

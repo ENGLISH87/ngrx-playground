@@ -8,7 +8,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RouteAComponent } from './components/route-a/route-a.component';
 import { RouteBComponent } from './components/route-b/route-b.component';
 import { InterstitialComponent } from './components/interstitial/interstitial.component';
-import { StateModule } from './state/state.module';
+import { StateModule } from './store/store.module';
 import { ErrorComponent } from './components/error/error.component';
 
 const APP_ROUTES: Routes = [

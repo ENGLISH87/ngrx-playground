@@ -1,5 +1,5 @@
 import { tassign } from 'tassign';
-import { AppState } from './state.models';
+import { AppState } from './store.models';
 import { environment } from 'src/environments/environment';
 import { quoteReducer } from './quote/quote.reducers';
 import { journeyReducer } from './journey/journey.reducers';

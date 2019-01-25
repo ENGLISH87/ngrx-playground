@@ -1,4 +1,4 @@
-import { AppState } from '../state.models';
+import { AppState } from '../store.models';
 import { createSelector } from '@ngrx/store';
 import { QuoteState } from './quote.models';
 

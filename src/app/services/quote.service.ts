@@ -1,7 +1,7 @@
 import { of, Observable, throwError } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Quote, INITIAL_QUOTE_STATE } from '../state/quote/quote.models';
+import { Quote, INITIAL_QUOTE_STATE } from '../store/quote/quote.models';
 
 @Injectable({
   providedIn: 'root',

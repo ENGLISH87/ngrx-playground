@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { AppState } from '../state.models';
+import { AppState } from '../store.models';
 import { JourneyState } from './journey.models';
 
 export const selectJourney = (state: AppState) => state.journey;

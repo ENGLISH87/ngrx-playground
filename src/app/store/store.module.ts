@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './state.reducer';
+import { reducers, metaReducers } from './store.reducer';
 import { environment } from 'src/environments/environment';
 import { QuoteEffects } from './quote/quote.effects';
 import { EffectsModule } from '@ngrx/effects';
