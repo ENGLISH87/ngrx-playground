@@ -21,8 +21,9 @@ export const CLEAR_STATE = 'CLEAR_STATE';
  * and the current or initial state and return a new immutable state.
  */
 export const reducers: ActionReducerMap<AppState> = {
-  journey: journeyReducer,
-  quote: quoteReducer
+  journeyState: journeyReducer,
+  quoteState: quoteReducer,
+  drawerState: null
 };
 
 /**

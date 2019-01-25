@@ -29,7 +29,7 @@ export class RouteAComponent {
     this.count$ = this._store.select(JourneySelectors.selectJourneyCount);
     this.lastName$ = this._store.select(QuoteSelectors.selectLastName);
     this.details$ = this._store.select(QuoteSelectors.selectQuoteDetails);
-    this.loadingQuote$ = this._store.select(quote => quote.quote.isFetching);
+    this.loadingQuote$ = this._store.select(quote => quote.quoteState.isFetching);
   }
 
   increment(): void {

@@ -13,6 +13,6 @@ export class ErrorComponent {
   constructor(
     private _store: Store<AppState>
   ) {
-    this.error$ = this._store.select(store => store.quote.error);
+    this.error$ = this._store.select(store => store.quoteState.error);
   }
 }

@@ -15,6 +15,6 @@ export class RouteBComponent {
   constructor(
     private _store: Store<AppState>
   ) {
-    this.routerState$ = this._store.select(store => store.journey.router);
+    this.routerState$ = this._store.select(store => store.journeyState.router);
   }
 }

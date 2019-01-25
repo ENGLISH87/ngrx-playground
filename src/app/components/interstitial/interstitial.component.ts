@@ -15,7 +15,7 @@ export class InterstitialComponent implements OnDestroy {
   constructor(
     private _store: Store<AppState>
   ) {
-    this.loadingQuote$ = this._store.select(store => store.quote.isFetching);
+    this.loadingQuote$ = this._store.select(store => store.quoteState.isFetching);
 
     // always load new quote
     this._store.dispatch(new Quote.FectchQuote());
