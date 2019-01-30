@@ -29,25 +29,51 @@ export const quoteReducer = (lastState: QuoteState = INITIAL_QUOTE_STATE, action
       });
 
     case QuoteActions.QuoteActionTypes.FETCH_QUOTE:
-      return tassign(lastState, {
-        isFetching: true
+      return tassign(lastState, <QuoteState>{
+        isFetching: true,
+        error: null
       });
 
     case QuoteActions.QuoteActionTypes.FETCH_QUOTE_ERROR:
       return tassign(lastState, <QuoteState>{
         isFetching: false,
         error: action.payload.error,
-        quote: null
+        quote: null,
+        lastUpated: null
       });
 
     case QuoteActions.QuoteActionTypes.FETCH_QUOTE_SUCCESS:
       return tassign(lastState, <QuoteState>{
         isFetching: false,
-        error: '',
-        receivedAt: action.payload.receivedAt,
+        lastUpated: action.payload.lastUpated,
         quote: {
           ...action.payload.quote,
         }
+      });
+
+    case QuoteActions.QuoteActionTypes.SAVE_QUOTE:
+      return tassign(lastState, <QuoteState>{
+        ...lastState,
+        isSaving: true,
+        error: null
+      });
+
+    case QuoteActions.QuoteActionTypes.SAVE_QUOTE_SUCCESS:
+      return tassign(lastState, <QuoteState>{
+        ...lastState,
+        isSaving: false,
+        lastUpated: action.payload.lastUpated,
+        quote: {
+          ...action.payload.quote
+        }
+      });
+
+    case QuoteActions.QuoteActionTypes.SAVE_QUOTE_ERROR:
+      return tassign(lastState, <QuoteState>{
+        ...lastState,
+        isSaving: false,
+        error: action.payload.error,
+        quote: null
       });
 
     case QuoteActions.QuoteActionTypes.MUTATE_ERROR:

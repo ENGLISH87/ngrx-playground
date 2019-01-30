@@ -21,6 +21,7 @@ export class RouteAComponent {
   lastName$: Observable<string>;
   loadingQuote$: Observable<boolean>;
   stateSub: Subscription;
+  savingQuote$: Observable<boolean>;
 
   constructor(
     private _store: Store<AppState>
@@ -30,6 +31,7 @@ export class RouteAComponent {
     this.lastName$ = this._store.select(QuoteSelectors.selectLastName);
     this.details$ = this._store.select(QuoteSelectors.selectQuoteDetails);
     this.loadingQuote$ = this._store.select(quote => quote.quoteState.isFetching);
+    this.savingQuote$ = this._store.select(quote => quote.quoteState.isSaving);
   }
 
   increment(): void {
@@ -54,6 +56,10 @@ export class RouteAComponent {
 
   setPcw(): void {
     this._store.dispatch(new Journey.SetPcw({ pcw: 'gocompare' }));
+  }
+
+  saveQuote(): void {
+    this._store.dispatch(new Quote.SaveQuote());
   }
 
   resetState(): void {

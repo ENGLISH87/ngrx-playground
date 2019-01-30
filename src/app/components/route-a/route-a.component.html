@@ -2,7 +2,7 @@
 <a [routerLink]="['/']">Interstitial</a> | 
 <a [routerLink]="['/route-b']">Go to route B</a>
 
-<div class="app-root" *ngIf="!(loadingQuote$ | async) else quoteWrapper">
+<div class="app-root" *ngIf="!(loadingQuote$ | async) && !(savingQuote$ | async) else quoteWrapper">
   <div>{{ state$ | async | json }}</div>
 
   <h2> Hello Mr {{ lastName$ | async }} </h2>
@@ -18,6 +18,7 @@
   <button class="change-name" (click)="changeName()">Change name</button>
   <button (click)="changeDetails()">Change Details</button>
   <button (click)="changeError()">Demo Mutate Error Check</button>
+  <button (click)="saveQuote()">Save Quote</button>
   <button (click)="resetState()">Reset State</button>
 
   <app-smart-component></app-smart-component>

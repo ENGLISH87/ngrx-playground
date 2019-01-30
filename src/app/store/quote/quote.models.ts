@@ -1,7 +1,8 @@
 
 export const INITIAL_QUOTE_STATE: QuoteState = {
   isFetching: false,
-  receivedAt: null,
+  isSaving: false,
+  lastUpated: null,
   error: null,
   quote: {
     id: 1,
@@ -16,8 +17,9 @@ export const INITIAL_QUOTE_STATE: QuoteState = {
 };
 
 export interface QuoteState {
-  receivedAt: string;
+  lastUpated: string;
   isFetching: boolean;
+  isSaving: boolean;
   quote: Quote;
   error?: string;
 }

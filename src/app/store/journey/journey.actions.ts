@@ -2,10 +2,10 @@ import { Action } from '@ngrx/store';
 import { RouterNavigatedAction } from '@ngrx/router-store';
 
 export enum JourneyActionTypes {
-  INCREMENT_COUNT = 'INCREMENT_COUNT',
-  DECREMENT_COUNT = 'DECREMENT_COUNT',
-  SET_PCW = 'SET_PCW',
-  RESET_JOURNEY = 'RESET_JOURNEY',
+  INCREMENT_COUNT = '[JOURNEY] INCREMENT_COUNT',
+  DECREMENT_COUNT = '[JOURNEY] DECREMENT_COUNT',
+  SET_PCW = '[JOURNEY] SET_PCW',
+  RESET_JOURNEY = '[JOURNEY] RESET_JOURNEY',
 }
 
 export class IncrementCount implements Action {

@@ -11,7 +11,6 @@ import { ActionReducerMap, MetaReducer, ActionReducer, Action, INIT } from '@ngr
  * ensure that none of the reducers accidentally mutates the state.
  */
 import { storeFreeze } from 'ngrx-store-freeze';
-import { SessionService } from '../services/sessionStorage.service';
 
 export const CLEAR_STATE = 'CLEAR_STATE';
 
